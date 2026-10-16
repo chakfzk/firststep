@@ -1,0 +1,30 @@
+{
+  "name": "firststep",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chakfzk/firststep.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chakfzk/firststep/issues"
+  },
+  "homepage": "https://github.com/chakfzk/firststep#readme",
+  "dependencies": {
+    "hwp.js": "^0.0.3",
+    "jszip": "^3.10.2"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  },
+  "type": "module"
+}

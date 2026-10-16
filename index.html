@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#1f5fbf" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="한글 뷰어" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon-180.png" />
+    <title>한글 뷰어</title>
+  </head>
+  <body>
+    <header class="bar">
+      <button id="open" type="button">열기</button>
+      <span id="name">한글 뷰어</span>
+      <button id="edit" type="button" hidden>편집</button>
+      <button id="save" type="button" hidden disabled>저장</button>
+    </header>
+    <main id="view">
+      <section id="empty">
+        <h1>HWP · HWPX 뷰어</h1>
+        <p>HWPX 문서는 글자 수정 후 저장할 수 있습니다.<br />HWP 문서는 보기만 지원합니다.</p>
+        <button id="open-big" type="button">파일 열기</button>
+        <p class="note">파일은 이 기기 안에서만 처리되며 외부로 전송되지 않습니다.</p>
+      </section>
+      <div id="doc"></div>
+    </main>
+    <input id="file" type="file" hidden />
+    <div id="toast" role="status"></div>
+    <dialog id="save-dialog">
+      <p>저장할 파일이 준비되었습니다.</p>
+      <button id="share" type="button">공유 · 파일에 저장</button>
+      <button id="download" type="button">다운로드</button>
+      <button id="cancel" type="button" class="plain">취소</button>
+    </dialog>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

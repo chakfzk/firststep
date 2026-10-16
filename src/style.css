@@ -1,0 +1,86 @@
+:root {
+  --accent: #1f5fbf;
+  --bg: #e9ebef;
+  --bar: #ffffff;
+  --text: #1b1d21;
+  --muted: #666b75;
+  --line: #d4d7dd;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #17181b; --bar: #24262a; --text: #eceef2; --muted: #a0a5ae; --line: #3a3d43; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+button {
+  font: inherit;
+  font-size: 15px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bar);
+  color: var(--accent);
+}
+button:disabled { color: var(--muted); opacity: 0.5; }
+button.active, #open-big { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  padding-top: max(8px, env(safe-area-inset-top));
+  background: var(--bar);
+  border-bottom: 1px solid var(--line);
+}
+#name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; text-align: center; }
+
+#view { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; padding: 8px 8px max(24px, env(safe-area-inset-bottom)); }
+#empty { max-width: 420px; margin: 12vh auto 0; text-align: center; padding: 0 16px; }
+#empty h1 { font-size: 22px; }
+#empty p { color: var(--muted); line-height: 1.6; }
+#open-big { font-size: 17px; padding: 12px 28px; margin: 12px 0; }
+.note { font-size: 13px; }
+#doc { width: max-content; margin: 0 auto; }
+
+#toast {
+  position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom));
+  transform: translate(-50%, 20px); opacity: 0; transition: 0.25s;
+  max-width: calc(100% - 32px); padding: 10px 16px; border-radius: 10px;
+  background: rgba(30, 30, 30, 0.92); color: #fff; font-size: 14px; pointer-events: none;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+dialog { border: none; border-radius: 14px; padding: 20px; width: min(320px, 90vw); background: var(--bar); color: var(--text); }
+dialog::backdrop { background: rgba(0, 0, 0, 0.4); }
+dialog button { display: block; width: 100%; margin-top: 8px; }
+dialog .plain { border: none; color: var(--muted); }
+
+/* ---------- 문서 렌더링 (다크 모드와 무관하게 종이처럼 표시) ---------- */
+.hwpx { color: #000; }
+.hwpx .paper { background: #fff; margin: 0 auto 12px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); overflow-wrap: break-word; }
+.hwpx .para { white-space: pre-wrap; }
+.hwpx .page-break { border-top: 1px dashed #bbb; margin-top: 16px; padding-top: 16px; }
+.hwpx .tab { display: inline-block; width: 2em; }
+.hwpx .tbl { border-collapse: collapse; text-indent: 0; }
+.hwpx .tbl.block-obj { margin: 2px 0; }
+.hwpx .tbl.center { margin-left: auto; margin-right: auto; }
+.hwpx .inline-obj { display: inline-table; vertical-align: middle; }
+.hwpx img.inline-obj { display: inline-block; }
+.hwpx img.block-obj, .hwpx .img-missing { display: block; max-width: 100%; height: auto !important; object-fit: contain; }
+.hwpx .img-missing { display: flex; align-items: center; justify-content: center; background: #f2f2f2; color: #888; font-size: 12px; max-height: 120px; }
+.hwpx .box { text-indent: 0; }
+.hwpx .textbox { margin: 4px 0; }
+.hwpx .equation { font-family: serif; font-style: italic; color: #444; }
+
+.hwpx.editing .ed { outline: 1px dashed rgba(31, 95, 191, 0.35); outline-offset: -1px; border-radius: 2px; }
+.hwpx.editing .ed:focus { outline: 2px solid var(--accent); background: rgba(31, 95, 191, 0.08); }
+.hwpx.editing .ed:empty { display: inline-block; min-width: 0.6em; }
+
